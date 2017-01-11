@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "818192365754",
+    "firebase_url": "https://rent-it-app.firebaseio.com",
+    "project_id": "rent-it-app",
+    "storage_bucket": "rent-it-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:818192365754:android:22dca45e94cf3707",
+        "android_client_info": {
+          "package_name": "com.rent_it_app.rent_it"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "818192365754-38010u0v22nqs4t2q76dtlet19bf9tg4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8VU8mIuoRQ1bdvB5Pm2X_wOI8qyqBcIo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
