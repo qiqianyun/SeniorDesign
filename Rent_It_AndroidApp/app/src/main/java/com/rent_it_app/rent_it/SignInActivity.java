@@ -102,7 +102,8 @@ public class SignInActivity extends BaseActivity {
             return;
         }
 
-        showProgressDialog();
+        //showProgressDialog();
+        showProgressDialogForSignIn();
 
         // [START sign_in_with_email]
         mAuth.signInWithEmailAndPassword(email, password)
