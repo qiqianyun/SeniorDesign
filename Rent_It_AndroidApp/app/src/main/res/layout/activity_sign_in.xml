@@ -15,19 +15,6 @@
         android:background="@color/grey_300"
         android:gravity="center_vertical">
 
-        <LinearLayout
-            android:id="@+id/myStatusView"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp">
-            <TextView
-                android:text="You are successfully signed out"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/myStatus"
-                android:visibility="gone"/>
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/email_password_fields"
@@ -69,19 +56,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/sign_in"
+                android:onClick="logIn"
                 android:background="@color/colorAccent" />
 
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/sign_out_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/sign_out"
-            android:theme="@style/ThemeOverlay.MyDarkButton"
-            android:visibility="gone" />
 
 
         <LinearLayout

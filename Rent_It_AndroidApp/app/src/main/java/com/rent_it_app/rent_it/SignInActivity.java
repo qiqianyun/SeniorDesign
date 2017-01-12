@@ -21,8 +21,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class SignInActivity extends BaseActivity implements
-        View.OnClickListener {
+public class SignInActivity extends BaseActivity {
 
     private static final String TAG = "EmailPassword";
 
@@ -44,8 +43,7 @@ public class SignInActivity extends BaseActivity implements
         mPasswordField = (EditText) findViewById(R.id.field_password);
         mResetButton = (Button) findViewById(R.id.btn_forgot_password);
 
-        findViewById(R.id.email_sign_in_button).setOnClickListener(this);
-        findViewById(R.id.sign_out_button).setOnClickListener(this);
+
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -130,13 +128,6 @@ public class SignInActivity extends BaseActivity implements
 
     }
 
-   /* private void signOut() {
-        mAuth.signOut();
-        updateUI(null);
-        mPasswordField.setText("");
-        findViewById(R.id.myStatus).setVisibility(View.VISIBLE);
-
-    }*/
 
     private boolean validateForm() {
         boolean valid = true;
@@ -169,37 +160,17 @@ public class SignInActivity extends BaseActivity implements
         hideProgressDialog();
         if (user != null) {
             //if logged in
-            /*findViewById(R.id.email_password_buttons).setVisibility(View.GONE);
-            findViewById(R.id.email_password_fields).setVisibility(View.GONE);
-            findViewById(R.id.btn_forgot_password).setVisibility(View.GONE);
-            findViewById(R.id.btn_sign_up).setVisibility(View.GONE);
-            findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);*/
+
             Intent intent = new Intent(SignInActivity.this, MainActivity.class);
             startActivity(intent);
-        } else {
-
-            findViewById(R.id.email_password_buttons).setVisibility(View.VISIBLE);
-            findViewById(R.id.email_password_fields).setVisibility(View.VISIBLE);
-            findViewById(R.id.btn_forgot_password).setVisibility(View.VISIBLE);
-            findViewById(R.id.btn_sign_up).setVisibility(View.VISIBLE);
-            findViewById(R.id.sign_out_button).setVisibility(View.GONE);
-
-            //findViewById(R.id.myStatus).setVisibility(View.VISIBLE);
         }
     }
 
-    @Override
-    public void onClick(View v) {
-        int i = v.getId();
 
-        if (i == R.id.email_sign_in_button) {
-            signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
-        } /*else if (i == R.id.sign_out_button) {
-            signOut();
-        }*/
+    public void logIn(View view){
+        signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
     }
 
-    //Added - pressing forgot button will take to another activity
     public void goToRestPasswordActivity(View view) {
         Intent intent = new Intent(SignInActivity.this, ResetPasswordActivity.class);
         //for debugging
