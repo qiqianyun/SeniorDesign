@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 /**
  * Created by Mimi on 1/10/17.
@@ -122,12 +123,11 @@ public class SignUpActivity extends BaseActivity {
                             startActivity(intent);
 
 
-                        }else{
+                        }else if(task.getException() instanceof FirebaseAuthUserCollisionException){
                             Toast.makeText(SignUpActivity.this, "Email Address already registered", Toast.LENGTH_SHORT).show();
-                            /*if (!task.isSuccessful()) {
-                                Toast.makeText(SignUpActivity.this, R.string.auth_failed,
-                                        Toast.LENGTH_SHORT).show();
-                            }*/
+
+                        }else{
+                            Toast.makeText(SignUpActivity.this, R.string.auth_failed, Toast.LENGTH_SHORT).show();
                         }
 
                         hideProgressDialog();
@@ -189,10 +189,6 @@ public class SignUpActivity extends BaseActivity {
         }
 
         return valid;
-    }
-
-    boolean isEmailValid(CharSequence email) {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
 
