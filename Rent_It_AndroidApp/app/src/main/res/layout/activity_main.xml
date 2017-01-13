@@ -11,7 +11,17 @@
     tools:context="com.rent_it_app.rent_it.MainActivity">
 
     <TextView
+        android:id="@+id/greetingMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="Hello XXX. You are signed in!" />
+
+    <Button
+        android:id="@+id/sign_out_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/greetingMessage"
+        android:text="@string/sign_out"
+        android:onClick="logOut"
+        android:theme="@style/ThemeOverlay.MyDarkButton" />
 </RelativeLayout>
