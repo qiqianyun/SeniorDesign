@@ -27,7 +27,7 @@ public class BaseActivity extends AppCompatActivity {
     public void showProgressDialogForSignIn() {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(this);
-            mProgressDialog.setMessage("Authenticating");
+            mProgressDialog.setMessage("Authenticating...");
             mProgressDialog.setIndeterminate(true);
         }
 

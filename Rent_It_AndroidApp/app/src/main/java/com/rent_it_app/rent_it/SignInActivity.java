@@ -175,7 +175,7 @@ public class SignInActivity extends BaseActivity {
     public void goToRestPasswordActivity(View view) {
         Intent intent = new Intent(SignInActivity.this, ResetPasswordActivity.class);
         //for debugging
-        //Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+        //Intent intent = new Intent(SignInActivity.this, TestActivity.class);
         startActivity(intent);
     }
 
