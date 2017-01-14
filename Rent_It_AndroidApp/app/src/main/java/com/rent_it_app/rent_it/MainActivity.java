@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends BaseActivity {
 
@@ -27,13 +28,15 @@ public class MainActivity extends BaseActivity {
         mSignOutButton = (Button) findViewById(R.id.sign_out_button);
         mAuth = FirebaseAuth.getInstance();
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        myStatusText.setText(getString(R.string.firebase_status_fmt, user.getUid()));
 
     }
 
     public void logOut(View view) {
         mAuth.signOut();
         Toast.makeText(MainActivity.this, "Successfully signed out", Toast.LENGTH_SHORT).show();
-        //myStatusText.setText("You are signed out");
+
         Intent intent = new Intent(MainActivity.this, SignInActivity.class);
         //if you want to pass parameter
         //intent.putExtra("EXTRA_SESSION_ID", sessionId);
