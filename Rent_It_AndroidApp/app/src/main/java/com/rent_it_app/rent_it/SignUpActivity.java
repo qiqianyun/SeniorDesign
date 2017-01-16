@@ -40,7 +40,7 @@ public class SignUpActivity extends BaseActivity {
     private DatabaseReference mDatabase;
     private FirebaseDatabase mFirebaseInstance;
 
-    private String userId;
+    private String userId = null;
 
 
     public void onCreate(Bundle savedInstanceState) {
@@ -142,9 +142,9 @@ public class SignUpActivity extends BaseActivity {
                         }
 
                         hideProgressDialog();
-
                     }
                 });
+
         Log.d(TAG, "createAccount:end:userId:" + userId);
     }
 
