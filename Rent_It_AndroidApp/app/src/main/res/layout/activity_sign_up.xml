@@ -27,7 +27,7 @@
         android:id="@+id/textView1"
         android:layout_gravity="center_horizontal"
         android:textColor="#FFF" />
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -58,7 +58,7 @@
             android:paddingLeft="0dp"
             android:drawablePadding="5dp"
             android:textColorHint="#999"/>
-    </LinearLayout>
+    </LinearLayout>-->
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

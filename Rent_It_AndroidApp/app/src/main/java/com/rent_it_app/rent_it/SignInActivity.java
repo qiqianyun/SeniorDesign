@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class SignInActivity extends BaseActivity {
 
-    private static final String TAG = "EmailPassword";
+    private static final String TAG = "SignIn";
 
     private EditText mEmailField;
     private EditText mPasswordField;

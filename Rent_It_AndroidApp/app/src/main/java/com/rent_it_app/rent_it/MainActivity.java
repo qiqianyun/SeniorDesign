@@ -29,7 +29,7 @@ public class MainActivity extends BaseActivity {
         mAuth = FirebaseAuth.getInstance();
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        myStatusText.setText(getString(R.string.firebase_status_fmt, user.getUid()));
+        myStatusText.setText(getString(R.string.firebase_status_fmt, user.getDisplayName()));
 
     }
 
