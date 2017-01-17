@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,6 +27,7 @@ public class MainActivity extends BaseActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private Button mSignOutButton;
+    private Toolbar mToolbar;
 
     private DatabaseReference mFirebaseDatabase;
     private FirebaseDatabase mFirebaseInstance;
@@ -40,6 +44,9 @@ public class MainActivity extends BaseActivity {
 
         myStatusText = (TextView)findViewById(R.id.greetingMessage);
         mSignOutButton = (Button) findViewById(R.id.sign_out_button);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         mAuth = FirebaseAuth.getInstance();
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -48,10 +55,8 @@ public class MainActivity extends BaseActivity {
 
 
         mFirebaseInstance = FirebaseDatabase.getInstance();
-
         // get reference to 'users' node
         mFirebaseDatabase = mFirebaseInstance.getReference("Users");
-
         // User data change listener
         mFirebaseDatabase.child(userId).addValueEventListener(new ValueEventListener() {
             @Override
@@ -85,6 +90,27 @@ public class MainActivity extends BaseActivity {
         //if you want to pass parameter
         //intent.putExtra("EXTRA_SESSION_ID", sessionId);
         startActivity(intent);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 
