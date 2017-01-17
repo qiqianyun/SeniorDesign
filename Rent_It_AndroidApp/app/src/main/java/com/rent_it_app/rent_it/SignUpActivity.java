@@ -16,13 +16,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.auth.UserProfileChangeRequest;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
 
 /**
  * Created by Mimi on 1/10/17.
@@ -33,15 +28,15 @@ public class SignUpActivity extends BaseActivity {
     private static final String TAG = "SignUp";
     private EditText mEmailField;
     private EditText mPasswordField;
-    private EditText mUserNameField;
+    private EditText mDisplayNameField;
+    private EditText mFirstNameField;
+    private EditText mLastNameField;
 
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    //private DatabaseReference mDatabase;
-    //private FirebaseDatabase mFirebaseInstance;
-
-
+    private DatabaseReference mDatabase;
+    private FirebaseDatabase mFirebaseInstance;
 
 
     public void onCreate(Bundle savedInstanceState) {
@@ -50,28 +45,29 @@ public class SignUpActivity extends BaseActivity {
 
         mEmailField = (EditText) findViewById(R.id.field_email);
         mPasswordField = (EditText) findViewById(R.id.field_password);
-        mUserNameField = (EditText) findViewById(R.id.field_user_name);
+        mDisplayNameField = (EditText) findViewById(R.id.field_display_name);
+        mFirstNameField = (EditText) findViewById(R.id.field_first_name);
+        mLastNameField = (EditText) findViewById(R.id.field_last_name);
 
 
         mAuth = FirebaseAuth.getInstance();
-        //mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
 
-
                 if (user != null) {
                     // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                   /* Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
 
-                    /*UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                            .setDisplayName(mUserNameField.getText().toString()).build();*/
+                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                            .setDisplayName(mDisplayNameField.getText().toString()).build();
 
-                    //Log.d(TAG, "my username is " + mUserNameField.getText().toString());
+                    //Log.d(TAG, "my username is " + mDisplayNameField.getText().toString());
 
-                    /*user.updateProfile(profileUpdates)
+                    user.updateProfile(profileUpdates)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
@@ -101,9 +97,8 @@ public class SignUpActivity extends BaseActivity {
                                     }
                                 });
                         mAuth.signOut();
-
+                        //user = null;
                     }
-
 
                 } else {
                     // User is signed out
@@ -145,13 +140,15 @@ public class SignUpActivity extends BaseActivity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
 
+                            String userId = task.getResult().getUser().getUid();
+
+                            User userData = new User(mFirstNameField.getText().toString(), mLastNameField
+                                    .getText().toString(), mDisplayNameField.getText().toString());
 
 
-                            //Toast.makeText(SignUpActivity.this, "We have sent you a verification email", Toast.LENGTH_SHORT).show();
-
-
-                            //Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
-                            //startActivity(intent);
+                            //Toast.makeText(SignUpActivity.this, userId, Toast.LENGTH_SHORT).show();
+                            //Log.d(TAG, "your user id is:" + userId);
+                            mDatabase.child(userId).setValue(userData);
 
 
                         }else if(task.getException() instanceof FirebaseAuthUserCollisionException){
@@ -209,16 +206,6 @@ public class SignUpActivity extends BaseActivity {
 
     public void signUpUser(View view){
         createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
-
-        //FirebaseUser user = mAuth.getCurrentUser();
-        //String userId = user.getUid();
-        //String userId = mDatabase.push().getKey();
-        //User userData = new User(mFirstNameField.getText().toString(), mLastNameField.getText().toString());
-
-// pushing user to 'users' node using the userId
-        //Toast.makeText(SignUpActivity.this, userId, Toast.LENGTH_SHORT).show();
-        //Log.d(TAG, "your user id is:" + userId);
-        //mDatabase.child(userId).setValue(userData);
     }
 }
 

@@ -11,16 +11,17 @@ public class User {
 
     public String firstname;
     public String lastname;
-    //public String username;
+    public String displayname;
 
     // Default constructor required for calls to
     // DataSnapshot.getValue(User.class)
     public User() {
     }
 
-    public User(String firstname, String lastname) {
+    public User(String firstname, String lastname, String displayname) {
         this.firstname = firstname;
         this.lastname = lastname;
+        this.displayname = displayname;
 
     }
 }
