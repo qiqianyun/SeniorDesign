@@ -25,6 +25,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Sign Up"
         android:id="@+id/textView1"
+        android:layout_marginTop="30dp"
         android:layout_gravity="center_horizontal"
         android:textColor="#FFF" />
     <LinearLayout
@@ -64,8 +65,8 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         android:ems="10"
-        android:id="@+id/field_user_name"
-        android:hint="User Name"
+        android:id="@+id/field_display_name"
+        android:hint="Display Name"
         android:layout_marginTop="10dp"
         android:textColor="#FFF"
         android:paddingLeft="0dp"

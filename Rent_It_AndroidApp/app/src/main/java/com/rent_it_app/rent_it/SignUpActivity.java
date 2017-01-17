@@ -11,10 +11,13 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by Mimi on 1/10/17.
@@ -25,10 +28,16 @@ public class SignUpActivity extends BaseActivity {
     private static final String TAG = "SignUp";
     private EditText mEmailField;
     private EditText mPasswordField;
+    private EditText mDisplayNameField;
+    private EditText mFirstNameField;
+    private EditText mLastNameField;
 
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private DatabaseReference mDatabase;
+    private FirebaseDatabase mFirebaseInstance;
+
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +45,13 @@ public class SignUpActivity extends BaseActivity {
 
         mEmailField = (EditText) findViewById(R.id.field_email);
         mPasswordField = (EditText) findViewById(R.id.field_password);
+        mDisplayNameField = (EditText) findViewById(R.id.field_display_name);
+        mFirstNameField = (EditText) findViewById(R.id.field_first_name);
+        mLastNameField = (EditText) findViewById(R.id.field_last_name);
+
+
         mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference("Users");
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -45,7 +60,26 @@ public class SignUpActivity extends BaseActivity {
 
                 if (user != null) {
                     // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                   /* Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+
+                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                            .setDisplayName(mDisplayNameField.getText().toString()).build();
+
+                    //Log.d(TAG, "my username is " + mDisplayNameField.getText().toString());
+
+                    user.updateProfile(profileUpdates)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Log.d(TAG, "Username added");
+
+                                    }
+                                }
+                            });
+
+
+                    Log.d(TAG, "Username:"+ user.getDisplayName());*/
 
                     // Only send if email is not confirmed.
                     if (!user.isEmailVerified()) {
@@ -54,21 +88,23 @@ public class SignUpActivity extends BaseActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
-                                            Log.d(TAG, "Email sent");
+                                            Log.d(TAG, "Verfify Email sent");
+                                            Toast.makeText(SignUpActivity.this, "We have sent you a verification email", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
+                                            startActivity(intent);
+                                            Log.d(TAG, "changed to sign in activity");
                                         }
                                     }
                                 });
                         mAuth.signOut();
+                        //user = null;
                     }
+
                 } else {
                     // User is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                    //Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
-
-                updateUI(user);
-
-
-
+                hideProgressDialog();
             }
         };
 
@@ -103,10 +139,16 @@ public class SignUpActivity extends BaseActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
-                            Toast.makeText(SignUpActivity.this, "We have sent you a verification email", Toast.LENGTH_SHORT).show();
 
-                            Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
-                            startActivity(intent);
+                            String userId = task.getResult().getUser().getUid();
+
+                            User userData = new User(mFirstNameField.getText().toString(), mLastNameField
+                                    .getText().toString(), mDisplayNameField.getText().toString());
+
+
+                            //Toast.makeText(SignUpActivity.this, userId, Toast.LENGTH_SHORT).show();
+                            //Log.d(TAG, "your user id is:" + userId);
+                            mDatabase.child(userId).setValue(userData);
 
 
                         }else if(task.getException() instanceof FirebaseAuthUserCollisionException){
@@ -117,28 +159,15 @@ public class SignUpActivity extends BaseActivity {
                         }
 
                         hideProgressDialog();
-
                     }
                 });
 
+
+        //Log.d(TAG, "createAccount:end:userId:" + userId);
     }
 
-    /*private void signOut() {
-        mAuth.signOut();
-        updateUI(null);
-    }*/
 
-    private void updateUI(FirebaseUser user) {
-        hideProgressDialog();
-        if (user != null) {
-            //user logged in
-            /*Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
-            startActivity(intent);*/
-        } else{
-            /*Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
-            startActivity(intent);*/
-        }
-    }
+
 
     private boolean validateForm() {
         boolean valid = true;
@@ -160,8 +189,8 @@ public class SignUpActivity extends BaseActivity {
         if (TextUtils.isEmpty(password)) {
             mPasswordField.setError("Required");
             valid = false;
-        } else if(password.length() < 5) {
-            mPasswordField.setError("5 or more characters required");
+        } else if(password.length() < 6) {
+            mPasswordField.setError("6 or more characters required");
             valid = false;
         }else {
             mPasswordField.setError(null);

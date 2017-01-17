@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class SignInActivity extends BaseActivity {
 
-    private static final String TAG = "EmailPassword";
+    private static final String TAG = "SignIn";
 
     private EditText mEmailField;
     private EditText mPasswordField;
@@ -57,6 +57,7 @@ public class SignInActivity extends BaseActivity {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
 
+                    //originally here
                     // Only send if email is not confirmed.
                     if (!user.isEmailVerified()) {
                         user.sendEmailVerification()
@@ -70,6 +71,7 @@ public class SignInActivity extends BaseActivity {
                                     }
                                 });
                         mAuth.signOut();
+                        user = null;
                     }
                 } else {
                     // User is signed out
@@ -101,6 +103,8 @@ public class SignInActivity extends BaseActivity {
         if (!validateForm()) {
             return;
         }
+
+
 
         //showProgressDialog();
         showProgressDialogForSignIn();
