@@ -50,7 +50,7 @@ public class MainActivity extends BaseActivity {
         mFirebaseInstance = FirebaseDatabase.getInstance();
 
         // get reference to 'users' node
-        mFirebaseDatabase = mFirebaseInstance.getReference();
+        mFirebaseDatabase = mFirebaseInstance.getReference("Users");
 
         // User data change listener
         mFirebaseDatabase.child(userId).addValueEventListener(new ValueEventListener() {

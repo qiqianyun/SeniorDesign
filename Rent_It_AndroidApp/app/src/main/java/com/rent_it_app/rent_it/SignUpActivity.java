@@ -51,7 +51,7 @@ public class SignUpActivity extends BaseActivity {
 
 
         mAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference("Users");
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
