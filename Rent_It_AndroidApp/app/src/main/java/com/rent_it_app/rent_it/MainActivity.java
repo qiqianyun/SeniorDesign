@@ -1,6 +1,7 @@
 package com.rent_it_app.rent_it;
 
 import android.content.Intent;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,19 +22,23 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class MainActivity extends BaseActivity {
+import com.rent_it_app.rent_it.activity.FragmentDrawer;
+
+public class MainActivity extends BaseActivity
+        implements FragmentDrawer.FragmentDrawerListener{
 
     private TextView myStatusText;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private Button mSignOutButton;
+
     private Toolbar mToolbar;
+    private FragmentDrawer drawerFragment;
 
     private DatabaseReference mFirebaseDatabase;
     private FirebaseDatabase mFirebaseInstance;
 
     private String userId;
-
     private static final String TAG = "Main";
 
 
@@ -47,8 +52,12 @@ public class MainActivity extends BaseActivity {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        mAuth = FirebaseAuth.getInstance();
+        drawerFragment = (FragmentDrawer)
+                getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
+        drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), mToolbar);
+        drawerFragment.setDrawerListener(this);
 
+        mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userId = user.getUid().toString();
         Log.e(TAG, "Imy user id is " + userId);
@@ -112,6 +121,9 @@ public class MainActivity extends BaseActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    @Override
+    public void onDrawerItemSelected(View view, int position) {
 
+    }
 
 }
