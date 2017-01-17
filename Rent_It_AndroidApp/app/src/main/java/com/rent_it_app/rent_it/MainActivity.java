@@ -1,7 +1,11 @@
 package com.rent_it_app.rent_it;
 
 import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +16,8 @@ import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.support.design.widget.Snackbar;
+import android.support.design.widget.CoordinatorLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -23,6 +29,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import com.rent_it_app.rent_it.activity.FragmentDrawer;
+import com.rent_it_app.rent_it.activity.FriendsFragment;
+import com.rent_it_app.rent_it.activity.HomeFragment;
+import com.rent_it_app.rent_it.activity.MessagesFragment;
 
 public class MainActivity extends BaseActivity
         implements FragmentDrawer.FragmentDrawerListener{
@@ -56,6 +65,8 @@ public class MainActivity extends BaseActivity
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), mToolbar);
         drawerFragment.setDrawerListener(this);
+        // display the first navigation drawer view on app launch
+        displayView(0);
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -99,6 +110,10 @@ public class MainActivity extends BaseActivity
         //if you want to pass parameter
         //intent.putExtra("EXTRA_SESSION_ID", sessionId);
         startActivity(intent);
+        /*Snackbar snackbar = Snackbar
+                .make(coordinatorLayout, "Welcome to AndroidHive", Snackbar.LENGTH_LONG);
+
+        snackbar.show();*/
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -118,12 +133,46 @@ public class MainActivity extends BaseActivity
         if (id == R.id.action_settings) {
             return true;
         }
+        if(id == R.id.action_search){
+            Toast.makeText(getApplicationContext(), "Search action is selected!", Toast.LENGTH_SHORT).show();
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
     @Override
     public void onDrawerItemSelected(View view, int position) {
+        displayView(position);
+    }
+    private void displayView(int position) {
+        Fragment fragment = null;
+        String title = getString(R.string.app_name);
+        switch (position) {
+            case 0:
+                fragment = new HomeFragment();
+                title = getString(R.string.title_home);
+                break;
+            case 1:
+                fragment = new FriendsFragment();
+                title = getString(R.string.title_friends);
+                break;
+            case 2:
+                fragment = new MessagesFragment();
+                title = getString(R.string.title_messages);
+                break;
+            default:
+                break;
+        }
 
+        if (fragment != null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container_body, fragment);
+            fragmentTransaction.commit();
+
+            // set the toolbar title
+            getSupportActionBar().setTitle(title);
+        }
     }
 
 }
