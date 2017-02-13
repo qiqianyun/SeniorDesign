@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorAccent"
+        android:padding="16dp"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        android:gravity="center_vertical|center_horizontal"
+        android:drawableStart="@drawable/ic_action_dehaze"
+        android:text="Trade Confirmed"
+        android:textSize="20sp"
+        android:id="@+id/textView" />
+    <ImageView
+        android:layout_marginTop="40dp"
+        android:layout_width="183dp"
+        android:layout_height="196dp"
+        android:layout_marginLeft="95dp"
+        android:layout_marginRight="95dp"
+        android:src="@drawable/shakehand"
+        android:id="@+id/imageView" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp"
+        android:text="Trade Confirmed!"
+        android:textColor="#FFD400"
+        android:textSize="35sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal"
+        android:padding="20dp"
+        android:text="The lender confirmed your trade. The rental clock started at 12:30 pm on
+        Jan 5,2017. You will be charged $30 per day."
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+    <Button
+        android:id="@+id/btn_view_my_rentals"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dip"
+        android:background="@color/colorAccent"
+        android:text="view my rentals"
+        android:onClick="backTorental" />
+</LinearLayout>
