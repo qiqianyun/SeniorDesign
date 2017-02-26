@@ -15,14 +15,16 @@
         android:text="Confirm item Return"
         android:textSize="20sp"
         android:id="@+id/textView" />
+
     <ImageView
         android:layout_marginTop="40dp"
         android:layout_width="183dp"
         android:layout_height="196dp"
         android:layout_marginLeft="95dp"
         android:layout_marginRight="95dp"
-        android:src="@drawable/confirm_return"
+        android:src="@drawable/confirm_item_return"
         android:id="@+id/imageView" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

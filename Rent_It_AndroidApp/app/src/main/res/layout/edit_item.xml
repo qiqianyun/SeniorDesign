@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    >
+        
     <TextView
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -15,12 +16,122 @@
         android:textSize="20sp"
         android:id="@+id/textView" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TLTLE"
+        android:paddingLeft="15dp"
+        android:textColor="#FFD400"
+        android:textSize="15sp" />
+
     <EditText
         style="@style/my_edittext_style"
-        android:text=""
+        android:hint ="6 people tent"
+        android:padding="5dp"
+        android:ems="10"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_margin="5dp"
+        android:id="@+id/editText2" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DESCRIPTION"
+        android:paddingLeft="15dp"
+        android:textColor="#FFD400"
+        android:textSize="15sp" />
+
+    <EditText
+        style="@style/my_edittext_style"
+        android:hint ="very good"
+        android:padding="5dp"
+        android:ems="200"
+        android:layout_width="fill_parent"
+        android:layout_height="90dp"
+        android:layout_margin="5dp"
+        android:id="@+id/editText" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CATEGORY"
+        android:paddingLeft="15dp"
+        android:textColor="#FFD400"
+        android:textSize="15sp" />
+    <EditText
+        style="@style/my_edittext_style"
+        android:hint ="tent"
+        android:padding="5dp"
+        android:ems="10"
+        android:drawableEnd="@drawable/ic_action_drop_down"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_margin="5dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="value"
+        android:paddingLeft="15dp"
+        android:textColor="#FFD400"
+        android:textSize="15sp" />
+    <EditText
+        style="@style/my_edittext_style"
+        android:hint ="$820"
+        android:padding="5dp"
+        android:gravity="end"
+        android:ems="10"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_margin="5dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DAILY RATE"
+        android:paddingLeft="15dp"
+        android:textColor="#FFD400"
+        android:textSize="15sp" />
+    <EditText
+        style="@style/my_edittext_style"
+        android:hint ="$60"
+        android:padding="5dp"
+        android:ems="10"
+        android:gravity="end"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_margin="5dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SELECT IMAGE"
+        android:paddingLeft="15dp"
+        android:textColor="#FFD400"
+        android:textSize="15sp" />
+    <Switch
+        android:text=" "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/switch3" />
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.08">
-    </EditText>
+        android:background="@color/colorAccent"
+        android:text="update"
+        android:onClick="update" />
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:text="hide listing"
+        android:onClick="hideListing" />
+
 
 </LinearLayout>
+

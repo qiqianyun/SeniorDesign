@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorAccent"
+        android:padding="16dp"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        android:gravity="center_vertical|center_horizontal"
+        android:drawableStart="@drawable/ic_action_back"
+        android:text="Damage Claim"
+        android:textSize="20sp"
+        android:id="@+id/textView" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="left"
+        android:padding="15dp"
+        android:text="4 people tent"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TLTLE"
+        android:paddingLeft="15dp"
+        android:textColor="#FFD400"
+        android:textSize="15sp" />
+    <EditText
+        style="@style/my_edittext_style"
+        android:hint ="parts missing"
+        android:padding="5dp"
+        android:ems="15"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_margin="15dp"
+        android:id="@+id/editText2" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DESCRIPTION OF DAMAGE"
+        android:paddingLeft="15dp"
+        android:textColor="#FFD400"
+        android:textSize="15sp" />
+
+    <EditText
+        style="@style/my_edittext_style"
+        android:hint ="missing something"
+        android:padding="5dp"
+        android:ems="200"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:layout_margin="15dp"
+        android:id="@+id/editText" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="IMAGE"
+        android:paddingLeft="15dp"
+        android:textColor="#FFD400"
+        android:textSize="15sp" />
+    <Switch
+        android:text=" "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:id="@+id/switch3" />
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:text="submit cliam"
+        android:onClick="sumitClaim" />
+
+
+
+</LinearLayout>
