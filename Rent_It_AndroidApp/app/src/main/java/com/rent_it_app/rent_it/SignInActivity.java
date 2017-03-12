@@ -20,6 +20,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.rent_it_app.rent_it.json_models.ChatUser;
+import com.rent_it_app.rent_it.views.ChatListFragment;
+
+import java.util.ArrayList;
 
 public class SignInActivity extends BaseActivity {
 
@@ -77,9 +81,17 @@ public class SignInActivity extends BaseActivity {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
+                hideProgressDialog();
+                if (user != null) {
+                    //if logged in
+                    /*ArrayList<String> defaultRoom = new ArrayList<String>();
+                    defaultRoom.add("home");*/
+                    /*ChatListFragment.user = new ChatUser(user.getUid(), user.getDisplayName(),
+                            user.getEmail(),true,defaultRoom);*/
 
-                updateUI(user);
-
+                    Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                }
             }
         };
     }
@@ -105,7 +117,6 @@ public class SignInActivity extends BaseActivity {
         }
 
 
-
         //showProgressDialog();
         showProgressDialogForSignIn();
 
@@ -118,15 +129,23 @@ public class SignInActivity extends BaseActivity {
 
 
                         if (!task.isSuccessful()) {
-                            Log.w(TAG, "signInWithEmail:failed", task.getException());
+                            Exception e = task.getException();
+                            Log.d(TAG, "signInWithEmail:failed:exception:", task.getException());
+                            try{
+                                Log.d(TAG, "signInWithEmail:failed:exception:getCause:", e.getCause());
+                            }
+                            catch(Exception e1){
+                                Log.d(TAG, "signInWithEmail:failed:exception:getCause:failed", e1);
+                            }
+                            Log.d(TAG, "signInWithEmail:failed:exception:getMessage:" + e.getMessage());
                             Toast.makeText(SignInActivity.this, R.string.auth_failed,
                                     Toast.LENGTH_SHORT).show();
+                        }else{
+
                         }
 
 
                         hideProgressDialog();
-
-
 
                     }
                 });
@@ -161,15 +180,14 @@ public class SignInActivity extends BaseActivity {
     }
 
 
-    private void updateUI(FirebaseUser user) {
+    /*private void updateUI(FirebaseUser user) {
         hideProgressDialog();
         if (user != null) {
             //if logged in
-
-            Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+            Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
             startActivity(intent);
         }
-    }
+    }*/
 
 
     public void logIn(View view){
@@ -178,8 +196,6 @@ public class SignInActivity extends BaseActivity {
 
     public void goToRestPasswordActivity(View view) {
         Intent intent = new Intent(SignInActivity.this, ResetPasswordActivity.class);
-        //for debugging
-        //Intent intent = new Intent(SignInActivity.this, TestActivity.class);
         startActivity(intent);
     }
 
