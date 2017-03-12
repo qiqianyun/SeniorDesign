@@ -1,0 +1,63 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/relativeLayout">
+
+        <ImageView
+            android:layout_width="68dp"
+            android:layout_height="110dp"
+            android:layout_weight="0"
+            android:src="@drawable/ic_profile"
+            android:id="@+id/imageView2" />
+        <TextView
+            android:text="@string/review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="115dp"
+            android:layout_marginStart="115dp"
+            android:layout_marginTop="19dp"
+            android:textSize="25sp"
+            android:id="@+id/name"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ratingBar"
+            android:layout_marginLeft="28dp"
+            android:layout_marginStart="28dp"
+            android:layout_alignBottom="@+id/imageView2"
+            android:layout_toRightOf="@+id/imageView2"
+            android:layout_toEndOf="@+id/imageView2" />
+
+        <TextView
+            android:text="@string/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:id="@+id/name1"
+            android:layout_alignBottom="@+id/imageView2"
+            android:layout_toLeftOf="@+id/ratingBar"
+            android:layout_toStartOf="@+id/ratingBar" />
+    </RelativeLayout>
+
+    <TextView
+        android:text="preview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView6"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_marginLeft="120dp"/>
+</RelativeLayout>    

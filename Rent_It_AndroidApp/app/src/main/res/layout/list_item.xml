@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-        
+    android:layout_height="match_parent">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -11,7 +10,8 @@
         android:padding="16dp"
         android:textAppearance="?android:attr/textAppearanceListItemSmall"
         android:gravity="center_vertical|center_horizontal"
-        android:drawableStart="@drawable/ic_action_back"
+        android:drawableStart="@drawable/ic_action_dehaze"
+        android:drawableLeft="@drawable/ic_action_dehaze"
         android:text="List Item"
         android:textSize="20sp"
         android:id="@+id/textView" />
@@ -23,14 +23,13 @@
         android:paddingLeft="15dp"
         android:textColor="#FFD400"
         android:textSize="15sp" />
-
     <EditText
         style="@style/my_edittext_style"
-        android:hint ="6 people tent"
+        android:hint =" "
         android:padding="5dp"
         android:ems="10"
-        android:layout_width="fill_parent"
-        android:layout_height="35dp"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
         android:layout_margin="5dp"
         android:id="@+id/editText2" />
 
@@ -43,14 +42,50 @@
         android:textSize="15sp" />
 
     <EditText
-    style="@style/my_edittext_style"
-    android:hint ="very good"
-    android:padding="5dp"
-    android:ems="200"
-    android:layout_width="fill_parent"
-    android:layout_height="90dp"
-    android:layout_margin="5dp"
-    android:id="@+id/editText" />
+        style="@style/my_edittext_style"
+        android:hint =" "
+        android:padding="5dp"
+        android:ems="200"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_margin="5dp"
+        android:id="@+id/editText" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CONDITION"
+        android:paddingLeft="15dp"
+        android:textColor="#FFD400"
+        android:textSize="15sp" />
+
+    <EditText
+        style="@style/my_edittext_style"
+        android:hint =" "
+        android:padding="5dp"
+        android:ems="10"
+        android:layout_width="fill_parent"
+        android:layout_height="25dp"
+        android:layout_margin="5dp"
+        android:id="@+id/editText8" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ZIPCODE/LOCATION"
+        android:paddingLeft="15dp"
+        android:textColor="#FFD400"
+        android:textSize="15sp" />
+
+    <EditText
+        style="@style/my_edittext_style"
+        android:hint =" "
+        android:padding="5dp"
+        android:ems="10"
+        android:layout_width="fill_parent"
+        android:layout_height="26dp"
+        android:layout_margin="5dp"
+        android:id="@+id/editText7" />
 
     <TextView
         android:layout_width="match_parent"
@@ -61,12 +96,13 @@
         android:textSize="15sp" />
     <EditText
         style="@style/my_edittext_style"
-        android:hint ="tent"
+        android:hint =" "
         android:padding="5dp"
         android:ems="10"
         android:drawableEnd="@drawable/ic_action_drop_down"
+        android:drawableRight="@drawable/ic_action_drop_down"
         android:layout_width="fill_parent"
-        android:layout_height="35dp"
+        android:layout_height="30dp"
         android:layout_margin="5dp"/>
     <TextView
         android:layout_width="match_parent"
@@ -77,12 +113,12 @@
         android:textSize="15sp" />
     <EditText
         style="@style/my_edittext_style"
-        android:hint ="$820"
+        android:hint =""
         android:padding="5dp"
         android:gravity="end"
         android:ems="10"
         android:layout_width="fill_parent"
-        android:layout_height="35dp"
+        android:layout_height="26dp"
         android:layout_margin="5dp"/>
     <TextView
         android:layout_width="match_parent"
@@ -93,12 +129,12 @@
         android:textSize="15sp" />
     <EditText
         style="@style/my_edittext_style"
-        android:hint ="$60"
+        android:hint =""
         android:padding="5dp"
         android:ems="10"
         android:gravity="end"
         android:layout_width="fill_parent"
-        android:layout_height="35dp"
+        android:layout_height="28dp"
         android:layout_margin="5dp"/>
     <TextView
         android:layout_width="match_parent"
@@ -119,19 +155,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
-        android:text="update"
-        android:onClick="update" />
+        android:text="LIST IT"
+        android:onClick="lisIt" />
 
-    <Button
-        android:id="@+id/btn_back"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:text="hide listing"
-        android:onClick="hideListing" />
 
 
 </LinearLayout>
-

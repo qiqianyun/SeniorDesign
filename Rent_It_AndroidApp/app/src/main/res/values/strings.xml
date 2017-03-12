@@ -7,7 +7,8 @@
     <string name="loading">Loading…</string>
     <string name="auth_failed">Authentication failed</string>
     <string name="create_account">Create Account</string>
-
+    <string name="review">Review</string>
+    <string name="name">Name</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -63,7 +64,17 @@
         <item>Movies</item>
         <item>Notifications</item>
         <item>Settings</item>
-
+    </string-array>
+    <string-array name="names">
+        <item >Person1</item>
+        <item >Person2</item>
+        <item >Person3</item>
+        <item >Person4</item>
+        <item >Person5</item>
+        <item >Person6</item>
+        <item >Person7</item>
+        <item >Person8</item>
+        <item >Person9</item>
     </string-array>
 
     <string name="activity_title_about_us">About Us</string>

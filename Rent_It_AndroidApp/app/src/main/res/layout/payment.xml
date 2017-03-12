@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorAccent"
+        android:padding="16dp"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        android:gravity="center_vertical|center_horizontal"
+        android:drawableLeft="@drawable/ic_action_back"
+        android:drawableStart="@drawable/ic_action_back"
+        android:text="Payment"
+        android:textSize="20sp"
+        android:id="@+id/textView" />
+
+    <ImageView
+        android:layout_width="199dp"
+        android:layout_height="66dp"
+        android:layout_marginLeft="0dp"
+        android:src="@drawable/Paypal"
+        android:id="@+id/imageView" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pay with PayPal"
+        android:layout_marginLeft="15dp"
+        />
+    <EditText
+        style="@style/my_edittext_style"
+        android:hint ="Email"
+        android:padding="5dp"
+        android:ems="25"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_margin="15dp"
+        android:id="@+id/editText2" />
+    <EditText
+        style="@style/my_edittext_style"
+        android:hint ="Password"
+        android:padding="5dp"
+        android:ems="25"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:id="@+id/editText2" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:drawableStart="@drawable/ic_action_checkbox"
+        android:text="Stay logged in for faster checkout"
+        android:textSize="14dp"
+        android:drawableEnd="@drawable/ic_action_help"
+        />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="15dp"
+        android:text="For your security,we'll always ask you to log in to update your PayPal personal or financial info."
+        android:textSize="14dp"
+        />
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:text="log in"
+        android:onClick="login" />
+    <Button
+        android:id="@+id/btn_forgetpassword"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="fill_parent"
+        android:layout_height="42dp"
+        android:background="@null"
+        android:text="Forger your email or password"
+        android:textSize="10dp"
+        android:textColor="#000093"
+        android:onClick="goToRestPasswordActivity" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="or"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/editText3" />
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:text="create an account"
+        android:onClick="create" />
+
+</LinearLayout>
