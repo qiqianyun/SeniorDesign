@@ -7,7 +7,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.rent_it_app.rent_it.views.ChatListFragment;
 
-public class Chat implements Serializable
+public class   Chat implements Serializable
 {
 
     @SerializedName("msg_id")
